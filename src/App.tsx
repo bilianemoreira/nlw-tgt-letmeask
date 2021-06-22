@@ -1,5 +1,5 @@
 import {BrowserRouter ,Route} from 'react-router-dom'
-import { NewRoom } from "./pages/NewRoom";
+import { NewRoom } from "./pages/rooms/NewRoom";
 import { Home } from "./pages/Home";
 import './styles/global.scss'
 
@@ -11,3 +11,5 @@ function App() {
     </BrowserRouter>
   );
 }
+
+export default App;
