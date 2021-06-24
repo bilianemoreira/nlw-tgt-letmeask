@@ -17,8 +17,7 @@
 <p align="center">
   <a href="#about">About</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#functionalities">Functionalities</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#layouts">Layouts</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#wireframes">Wireframes</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#installation">Installation</a>
 </p>
 
@@ -37,7 +36,7 @@ already been asked so that the most important questions are prioritized.
 - [Firebase](https://firebase.google.com/)
 - [Sass](https://sass-lang.com/)
 
-### Layouts
+### Wireframes
 
 In the following link you will find the version of the UI Design wireframes:
 

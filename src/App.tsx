@@ -3,28 +3,26 @@ import { NewRoom } from "./pages/rooms/NewRoom";
 import { Home } from "./pages/Home";
 import { Room } from './pages/rooms/Room';
 import './styles/global.scss'
+import { AdminRoom } from './pages/rooms/AdminRoom';
 
 import { AuthContextProvider } from './contexts/AuthContext'
 
 
 function App() {
-
-  return(
-
+  return (
     <BrowserRouter>
       <AuthContextProvider>
         <Switch>
-          <Route path="/" exact component={Home}/>
-          <Route path="/rooms/new" component={NewRoom}/>
-          <Route path="/rooms/:id" component={Room}/>
+          <Route path="/" exact component={Home} />
+          <Route path="/rooms/new" exact component={NewRoom} />
+          <Route path="/rooms/:id" component={Room} />
+
+          <Route path="/admin/rooms/:id" component={AdminRoom} />
         </Switch>
       </AuthContextProvider>
-
     </BrowserRouter>
-
   );
 }
 
 export default App;
-
 
