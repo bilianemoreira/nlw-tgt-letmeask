@@ -33,7 +33,7 @@ already been asked so that the most important questions are prioritized.
 
 - [ReactJS](https://pt-br.reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Firebase](https://firebase.google.com/)
+- [Firebase - Realtime Database](https://firebase.google.com/)
 - [Sass](https://sass-lang.com/)
 
 ### Wireframes
@@ -44,18 +44,22 @@ In the following link you will find the version of the UI Design wireframes:
 
 ### Installation
 
-1 - Clone this repository:
-
 ```js
+
+# Clone this repository
+
 $ git clone https://github.com/bilianesilva/nlw-tgt-letmeask.git
 
-# enter the project folder
+# Go until folder directory:
 
-$ cd nlw-together
+$ cd letmeask
+
+# Install the dependencies yarn and run the web server:
 
 $ yarn install
 
 $ yarn start
+
 ```
 
 <br>
