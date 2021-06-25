@@ -58,15 +58,15 @@ export function AdminRoom() {
           <img src={logoImg} alt="Letmeask" />
           <div>
             <RoomCode code={roomId} />
-            <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
+            <Button isOutlined onClick={handleEndRoom}>Close Room</Button>
           </div>
         </div>
       </header>
 
       <main>
         <div className="room-title">
-          <h1>Sala {title}</h1>
-          { questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
+          <h1>Room {title}</h1>
+          { questions.length > 0 && <span>{questions.length} Question(s)</span>}
         </div>
 
         <div className="question-list">
@@ -84,13 +84,13 @@ export function AdminRoom() {
                     type="button"
                     onClick={() => handleCheckQuestionAsAnswered(question.id)}
                   >
-                    <img src={checkImg} alt="Marcar pergunta como respondida" />
+                    <img src={checkImg} alt="Mark question as answered" />
                   </button>
                   <button
                     type="button"
                     onClick={() => handleHighlightQuestion(question.id)}
                   >
-                    <img src={answerImg} alt="Dar destaque à pergunta" />
+                    <img src={answerImg} alt="Highlight the question" />
                   </button>
                 </>
               )}
@@ -98,7 +98,7 @@ export function AdminRoom() {
                 type="button"
                 onClick={() => handleDeleteQuestion(question.id)}
               >
-                <img src={deleteImg} alt="Remover pergunta" />
+                <img src={deleteImg} alt="Remove question" />
               </button>
             </Question>
         })}
