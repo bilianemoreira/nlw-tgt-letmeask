@@ -18,7 +18,9 @@
   <a href="#about">About</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#wireframes">Wireframes</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#live-version">Live Version</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#installation">Installation</a>
+
 </p>
 
 ### About
@@ -41,6 +43,10 @@ already been asked so that the most important questions are prioritized.
 In the following link you will find the version of the UI Design wireframes:
 
 - [UI Design Layout](<https://www.figma.com/file/uprM5S44lW6G3JNEt8cpSl/Letmeask-(Copy)?node-id=0%3A1>)
+
+## Live version
+
+Access the live version of this project [here.](https://letmeask-f692b.web.app/)
 
 ### Installation
 
