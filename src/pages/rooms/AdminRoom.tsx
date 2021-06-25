@@ -1,26 +1,28 @@
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom'
 
-import { Button } from '../../components/Button';
-import { RoomCode } from '../../components/RoomCode';
-import { Question } from '../../components/Question';
+import logoImg from 'src/assets/logo.svg';
+import deleteImg from 'src/assets/delete.svg';
+import checkImg from 'src/assets/check.svg';
+import answerImg from 'src/assets/answer.svg';
 
-import logoImg from '../../assets/logo.svg';
-import deleteImg from '../../assets/delete.svg';
+import { Button } from 'src/components/Button';
+import { Question } from 'src/components/Question';
+import { RoomCode } from 'src/components/RoomCode';
+import { useRoom } from 'src/hooks/useRoom';
 
-import '../../styles/rooms.scss';
-import { useRoom } from '../../hooks/useRoom';
-import { database } from '../../services/firebase';
+import 'src/styles/rooms.scss'
+import { database } from 'src/services/firebase';
 
 type RoomParams = {
-  id: string;
+  id: string
 }
 
 export function AdminRoom() {
-  // const { user } = useAuth();
+  // const { user } = useAuth()
   const history = useHistory()
-  const params = useParams<RoomParams>();
+  const params = useParams<RoomParams>()
   const roomId = params.id;
-
+  
   const { title, questions } = useRoom(roomId)
 
   async function handleEndRoom() {
@@ -32,12 +34,24 @@ export function AdminRoom() {
   }
 
   async function handleDeleteQuestion(questionId: string) {
-    if (window.confirm('Tem certeza que você deseja excluir esta pergunta?')) {
-      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
+    if (window.confirm('Tem certeza que deseja excluir essa pergunta?')) {
+      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
     }
   }
 
-  return (
+  async function handleCheckQuestionAsAnswered(questionId: string) {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({ 
+      isAnswered: true,
+    })
+  }
+
+  async function handleHighlightQuestion(questionId: string) {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({ 
+      isHighlighted: true,
+    })
+  }
+
+  return(
     <div id="page-room">
       <header>
         <div className="content">
@@ -52,28 +66,44 @@ export function AdminRoom() {
       <main>
         <div className="room-title">
           <h1>Sala {title}</h1>
-          { questions.length > 0 && <span>{questions.length} pergunta(s)</span> }
+          { questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
         </div>
 
         <div className="question-list">
-          {questions.map(question => {
-            return (
-              <Question
-                key={question.id}
-                content={question.content}
-                author={question.author}
+        {questions.map(question => {
+          return <Question 
+            key={question.id}
+            content={question.content} 
+            author={question.author} 
+            isAnswered={question.isAnswered}
+            isHighlighted={question.isHighlighted}
+            >
+              { !question.isAnswered && (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => handleCheckQuestionAsAnswered(question.id)}
+                  >
+                    <img src={checkImg} alt="Marcar pergunta como respondida" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleHighlightQuestion(question.id)}
+                  >
+                    <img src={answerImg} alt="Dar destaque à pergunta" />
+                  </button>
+                </>
+              )}
+              <button
+                type="button"
+                onClick={() => handleDeleteQuestion(question.id)}
               >
-                <button
-                  type="button"
-                  onClick={() => handleDeleteQuestion(question.id)}
-                >
-                  <img src={deleteImg} alt="Remover pergunta" />
-                </button>
-              </Question>
-            );
-          })}
+                <img src={deleteImg} alt="Remover pergunta" />
+              </button>
+            </Question>
+        })}
         </div>
       </main>
     </div>
-  );
+  )
 }

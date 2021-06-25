@@ -11,6 +11,8 @@ import { Button } from '../../components/Button';
 import '../../styles/auth.scss';
 import { database } from '../../services/firebase';
 
+
+
 export function NewRoom() {
   const { user } = useAuth();
   const history = useHistory();
