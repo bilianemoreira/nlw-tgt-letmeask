@@ -5,26 +5,31 @@ import { useAuth } from "./useAuth";
 type FirebaseQuestions = Record<
   string,
   {
-    content: string;
     author: {
       name: string;
       avatar: string;
     };
-    isHighlighted: boolean;
+    content: string;
     isAnswered: boolean;
-    likes: Record<string, { authorId: string }>;
+    isHighlighted: boolean;
+    likes: Record<
+      string,
+      {
+        authorId: string;
+      }
+    >;
   }
 >;
 
 type QuestionType = {
   id: string;
-  content: string;
   author: {
     name: string;
     avatar: string;
   };
-  isHighlighted: boolean;
+  content: string;
   isAnswered: boolean;
+  isHighlighted: boolean;
   likeCount: number;
   likeId: string | undefined;
 };
@@ -32,7 +37,7 @@ type QuestionType = {
 export function useRoom(roomId: string) {
   const { user } = useAuth();
   const [questions, setQuestions] = useState<QuestionType[]>([]);
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState();
 
   useEffect(() => {
     const roomRef = database.ref(`rooms/${roomId}`);
@@ -57,8 +62,8 @@ export function useRoom(roomId: string) {
         }
       );
 
-      setQuestions(parsedQuestions);
       setTitle(databaseRoom.title);
+      setQuestions(parsedQuestions);
     });
 
     return () => {
